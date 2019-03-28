@@ -1,11 +1,5 @@
 import React from 'react'
-import { push } from 'connected-react-router'
-import { bindActionCreators } from 'redux'
-import { connect } from 'react-redux'
-import {
-  increment,
-  decrement,
-} from '../../Actions/counter'
+import HomeContainer from '../../Containers/homeContainer'
 
 const Home = props => (
   <div>
@@ -28,21 +22,4 @@ const Home = props => (
   </div>
 )
 
-const mapStateToProps = ({ counter }) => ({
-  count: counter.count
-})
-
-const mapDispatchToProps = dispatch =>
-  bindActionCreators(
-    {
-      increment,
-      decrement,
-      changePage: () => push('/about-us')
-    },
-    dispatch
-  )
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Home)
+export default HomeContainer(Home)

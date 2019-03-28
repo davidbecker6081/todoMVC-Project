@@ -1,4 +1,3 @@
-
 const INCREMENT = 'counter/INCREMENT'
 const DECREMENT = 'counter/DECREMENT'
 
