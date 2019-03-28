@@ -4,10 +4,8 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import {
   increment,
-  incrementAsync,
   decrement,
-  decrementAsync
-} from '../../Reducers/counter'
+} from '../../Actions/counter'
 
 const Home = props => (
   <div>
@@ -16,16 +14,10 @@ const Home = props => (
 
     <p>
       <button onClick={props.increment}>Increment</button>
-      <button onClick={props.incrementAsync} disabled={props.isIncrementing}>
-        Increment Async
-      </button>
     </p>
 
     <p>
       <button onClick={props.decrement}>Decrement</button>
-      <button onClick={props.decrementAsync} disabled={props.isDecrementing}>
-        Decrement Async
-      </button>
     </p>
 
     <p>
@@ -37,18 +29,14 @@ const Home = props => (
 )
 
 const mapStateToProps = ({ counter }) => ({
-  count: counter.count,
-  isIncrementing: counter.isIncrementing,
-  isDecrementing: counter.isDecrementing
+  count: counter.count
 })
 
 const mapDispatchToProps = dispatch =>
   bindActionCreators(
     {
       increment,
-      incrementAsync,
       decrement,
-      decrementAsync,
       changePage: () => push('/about-us')
     },
     dispatch
