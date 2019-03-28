@@ -2,21 +2,17 @@ import { push } from 'connected-react-router'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import {
-  increment,
-  decrement,
-} from '../Actions/counter'
+  addTodo
+} from '../Actions/todoActions'
 
-const mapStateToProps = ({ counter, todoReducer }) => ({
-  count: counter.count,
+const mapStateToProps = ({ todoReducer }) => ({
   todos: todoReducer.todos
 })
 
 const mapDispatchToProps = dispatch =>
   bindActionCreators(
     {
-      increment,
-      decrement,
-      changePage: () => push('/about-us')
+      addTodo
     },
     dispatch
   )

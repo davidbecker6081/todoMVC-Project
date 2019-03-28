@@ -19,6 +19,8 @@ const Home = props => (
         Go to about page via redux
       </button>
     </p>
+
+    {props.todos}
   </div>
 )
 
