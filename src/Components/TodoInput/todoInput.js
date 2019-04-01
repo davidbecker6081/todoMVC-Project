@@ -9,6 +9,7 @@ class TodoInput extends React.Component {
         }
         this.submitTodo = this.submitTodo.bind(this)
         this.clearInput = this.clearInput.bind(this)
+        this.constructTodo = this.constructTodo.bind(this)
     }
 
     clearInput() {
@@ -17,9 +18,16 @@ class TodoInput extends React.Component {
         })
     }
 
+    constructTodo(todoInput) {
+        return {
+            value: todoInput
+        }
+    }
+
     submitTodo(e) {
         e.preventDefault()
-        this.props.addTodo(this.state.input)
+        const todo = this.constructTodo(this.state.input)
+        this.props.addTodo(todo)
         this.clearInput()
     }
 
