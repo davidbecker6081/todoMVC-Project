@@ -20,7 +20,8 @@ class TodoInput extends React.Component {
 
     constructTodo(todoInput) {
         return {
-            value: todoInput
+            value: todoInput,
+            completed: false
         }
     }
 

@@ -4,6 +4,10 @@
     justify-content: space-between;
 }
 
+.todo-value--completed {
+    text-decoration: line-through;
+}
+
 .todo:hover {
     background-color: rgba(219, 218, 218, 0.301);
     cursor: pointer;
@@ -19,5 +23,5 @@
 
 .todo:hover .todo-delete {
     cursor: pointer;
-    display: flex;
+    display: block;
 }

@@ -7,7 +7,17 @@ class AllTodos extends React.Component {
     render() {
         return (
             <section className="allTodos">
-                {this.props.todos.map((todo, i) => <Todo key={i} todo={todo} onDelete={this.props.deleteTodo.bind(this, i)} />)}
+                {
+                    this.props.todos.map((todo, i) => 
+                        <Todo
+                            key={i}
+                            todo={todo}
+                            onDelete={this.props.deleteTodo.bind(this, i)}
+                            completed={todo.completed}
+                            onToggleCompleted={this.props.toggleCompleted.bind(this, i)}
+                        />
+                    )
+                }
             </section>
         )
     }

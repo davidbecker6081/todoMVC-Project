@@ -9,3 +9,8 @@ export const deleteTodo = key => ({
     type: constants.DELETE_TODO,
     key
 })
+
+export const toggleCompleted = key => ({
+    type: constants.TOGGLE_COMPLETED,
+    key
+})

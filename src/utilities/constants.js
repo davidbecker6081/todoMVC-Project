@@ -2,10 +2,12 @@ const INCREMENT = 'counter/INCREMENT'
 const DECREMENT = 'counter/DECREMENT'
 const ADD_TODO = 'todo/ADD_TODO'
 const DELETE_TODO = 'todo/DELETE_TODO'
+const TOGGLE_COMPLETED = 'todo/TOGGLE_COMPLETED'
 
 export default {
     INCREMENT,
     DECREMENT,
     ADD_TODO,
-    DELETE_TODO
+    DELETE_TODO,
+    TOGGLE_COMPLETED
 }
