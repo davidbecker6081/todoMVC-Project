@@ -26,9 +26,11 @@ class TodoInput extends React.Component {
 
     submitTodo(e) {
         e.preventDefault()
-        const todo = this.constructTodo(this.state.input)
-        this.props.addTodo(todo)
-        this.clearInput()
+        if (this.state.input) {
+            const todo = this.constructTodo(this.state.input)
+            this.props.addTodo(todo)
+            this.clearInput()
+        }
     }
 
     render() {

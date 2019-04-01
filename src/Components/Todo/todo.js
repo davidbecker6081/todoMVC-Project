@@ -1,9 +1,13 @@
 import React from 'react'
+import './todo.css'
 
-const Todo = ({ todo }) => {
+const Todo = ({ todo, onDelete }) => {
     return (
         <article className="todo">
-            { todo.value }
+            <div className="todo-value">
+                { todo.value }
+            </div>
+            <button className="todo-delete" onClick={() => onDelete()}>X</button>
         </article>
     )
 }
