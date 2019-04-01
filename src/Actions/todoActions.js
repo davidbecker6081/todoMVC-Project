@@ -14,3 +14,9 @@ export const toggleCompleted = key => ({
     type: constants.TOGGLE_COMPLETED,
     key
 })
+
+export const updateTodo = (key, updatedValue) => ({
+    type: constants.UPDATE_TODO,
+    key,
+    updatedValue
+})

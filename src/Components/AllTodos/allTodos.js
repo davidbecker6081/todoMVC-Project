@@ -15,6 +15,7 @@ class AllTodos extends React.Component {
                             onDelete={this.props.deleteTodo.bind(this, i)}
                             completed={todo.completed}
                             onToggleCompleted={this.props.toggleCompleted.bind(this, i)}
+                            onUpdateTodo={this.props.updateTodo.bind(this, i)}
                         />
                     )
                 }

@@ -1,5 +1,6 @@
 import React from 'react'
 import TodoInputContainer from '../../Containers/todoInputContainer'
+import './todoInput.css'
 
 class TodoInput extends React.Component {
     constructor() {

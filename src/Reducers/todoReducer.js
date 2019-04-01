@@ -23,6 +23,13 @@ export default (state = initialState, action) => {
                 ...state,
                 todos: [...state.todos.filter((_todo, i) => i !== action.key), updatedTodo]
             }
+        case constants.UPDATE_TODO:
+            const todoToUpdate = state.todos.find((_todo, i) => i === action.key)
+            const updatedTodoWithValue = Object.assign({}, todoToUpdate, { value: action.updatedValue })
+            return {
+                ...state,
+                todos: [...state.todos.filter((_todo, i) => i !== action.key), updatedTodoWithValue]
+            }
         default:
             return state
     }

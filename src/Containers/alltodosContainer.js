@@ -2,7 +2,8 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import {
   deleteTodo,
-  toggleCompleted
+  toggleCompleted,
+  updateTodo
 } from '../Actions/todoActions'
 
 const mapStateToProps = ({ todoReducer }) => ({
@@ -13,7 +14,8 @@ const mapDispatchToProps = dispatch =>
   bindActionCreators(
     {
       deleteTodo,
-      toggleCompleted
+      toggleCompleted,
+      updateTodo
     },
     dispatch
   )
