@@ -8,14 +8,14 @@ class AllTodos extends React.Component {
         return (
             <section className="allTodos">
                 {
-                    this.props.todos.map((todo, i) => 
+                    this.props.todos.map((todo) => 
                         <Todo
-                            key={i}
+                            key={todo.id}
                             todo={todo}
-                            onDelete={this.props.deleteTodo.bind(this, i)}
+                            onDelete={this.props.deleteTodo.bind(this, todo.id)}
                             completed={todo.completed}
-                            onToggleCompleted={this.props.toggleCompleted.bind(this, i)}
-                            onUpdateTodo={this.props.updateTodo.bind(this, i)}
+                            onToggleCompleted={this.props.toggleCompleted.bind(this, todo.id)}
+                            onUpdateTodo={this.props.updateTodo.bind(this, todo.id)}
                         />
                     )
                 }

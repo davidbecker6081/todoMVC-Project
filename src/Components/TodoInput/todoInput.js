@@ -22,7 +22,8 @@ class TodoInput extends React.Component {
     constructTodo(todoInput) {
         return {
             value: todoInput,
-            completed: false
+            completed: false,
+            id: Math.random()
         }
     }
 
@@ -39,7 +40,7 @@ class TodoInput extends React.Component {
         const { input } = this.state
         return (
             <form className="todoInput-wrapper">
-                <input placeholder="Create a Todo" value={input} onChange={(e) => this.setState({ input: e.target.value })}/>
+                <input className="todoInput-addInput" placeholder="Create a Todo" value={input} onChange={(e) => this.setState({ input: e.target.value })}/>
                 <button onClick={(e) => this.submitTodo(e)}>Add Todo</button>
             </form>
         )

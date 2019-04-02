@@ -1,24 +1,68 @@
 import React from 'react'
 import './todo.css'
 
-const Todo = ({ todo, onDelete, completed, onToggleCompleted, onUpdateTodo }) => {
-    const completedClass = completed ? 'todo-value--completed' : ''
-    return (
-        <article className="todo">
-            <input type="checkbox" checked={completed} onChange={() => onToggleCompleted()}/>
-            <input
-                type ="text"
-                className={`todo-value ${completedClass}`}
-                readOnly={true}
-                onDoubleClick={(e) => {
-                    e.currentTarget.readOnly = false
-                }}
-                onBlur={e => { onUpdateTodo(e.target.value); e.currentTarget.readOnly = true }}
-                defaultValue={todo.value}
-                onChange={e => console.log('value:', e.target.value)}/>
-            <button className="todo-delete" onClick={() => onDelete()}>X</button>
-        </article>
-    )
+class Todo extends React.Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            todoValue: props.todo.value
+        }
+        this.handleKeyPress = this.handleKeyPress.bind(this)
+        this.focusAddTodoInput = this.focusAddTodoInput.bind(this)
+        this.updateTodo = this.updateTodo.bind(this)
+    }
+
+    updateTodo(editableField, updateValue) {
+        const inputIsEmpty = !updateValue.trim().length
+        if (inputIsEmpty) {
+            return this.props.onDelete()
+        }
+
+        this.props.onUpdateTodo(updateValue)
+        editableField.currentTarget.readOnly = true
+        this.focusAddTodoInput()
+    }
+
+    focusAddTodoInput() {
+        document.querySelector('.todoInput-addInput').focus()
+    }
+
+    handleKeyPress(e) {
+        if (e.key === 'Enter') {
+            this.updateTodo(e, e.target.value)
+        }
+        if (e.key === 'Escape') {
+            this.setState({ todoValue: this.props.todo.value })
+            this.focusAddTodoInput()
+        }
+    }
+
+    render() {
+        const { onDelete, completed, onToggleCompleted } = this.props
+        const completedClass = completed ? 'todo-value--completed' : ''
+        return (
+            <article className="todo">
+                <input type="checkbox" checked={completed} onChange={() => onToggleCompleted()}/>
+                <input
+                    type ="text"
+                    className={`todo-value ${completedClass}`}
+                    readOnly={true}
+                    onDoubleClick={(e) => {
+                        e.currentTarget.readOnly = false
+                    }}
+                    onBlur={e => this.updateTodo(e, e.target.value)}
+                    value={this.state.todoValue}
+                    onChange={(e) => this.setState({ todoValue: e.target.value })}
+                    onKeyUp={e => this.handleKeyPress(e)}
+                />
+                <button className="todo-delete" onClick={() => onDelete()}>X</button>
+            </article>
+        )
+    }
 }
 
 export default Todo
+
+// - typing in the text field and hitting enter should update the todo text
+// - removing all of the text, or typing only whitespace, and hitting enter, should delete the todo
+// - hitting the escape key should cancel the edits
